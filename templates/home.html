@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block style %}
+<style>
+    .card_title {
+        text-align: center;
+        color: blue;
+        font-weight: 700;
+        font-size: 25px;
+        font-style:italic;
+    }
+
+    .price_card {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .price_card .price {
+        margin-bottom: 0;
+        font-weight: bold;
+        font-size: 45px;
+        line-height: 1;
+    }
+
+    .price_card .per {
+        color: #a3a3a3;
+        font-size: 14px;
+        line-height: 1;
+    }
+
+    .bg-color {
+        background-color: rgba(0, 0, 0, .03);
+    }
+
+    .card {
+        margin-bottom: 20px;
+        text-align: center;
+        transition: all ease-in-out .5s;
+    }
+
+    .card:hover {
+        -moz-box-shadow: 10px 10px 15px rgba(0, 0, 0, .5);
+        -webkit-box-shadow: 10px 10px 15px rgba(0, 0, 0, .5);
+        box-shadow: 8px 8px 15px rgba(0, 0, 0, .5);
+    }
+
+    .card-btn {
+        padding: 30px 10px;
+        position: relative;
+        font-weight: bold;
+    }
+
+    .card-btn i {
+        padding-left: 10px;
+        position: relative;
+        top: 15;
+    }
+</style>
+{% endblock style %}
+
+{% block title %}HOMEPAGE{% endblock title %}
+
+{% block content %}
+<!--start Slider Image-->
+<div class="slider-img">
+    <div id="main-slide" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#main-slide" data-slide-to="0" class="active"></li>
+            <li data-target="#main-slide" data-slide-to="1"></li>
+            <li data-target="#main-slide" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="mg-title">
+                <h1>Unlimited Servers</h1>
+                <p>{% trans "Unlimited servers services" %}</p>
+            </div>
+            <div class="overlay"></div>
+            <div class="carousel-item img-slid-1 active">
+            </div>
+            <div class="carousel-item img-slid-2">
+            </div>
+            <div class="carousel-item img-slid-3">
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!--End slider image-->
+
+    <!--start features-->
+<div class="features ">
+    <div class="container">
+        <h1 class="text-center">{% trans "Offers" %}</h1>
+        <div class="row">
+            {% for card in card %}
+            <div class="col-lg-4">
+                <div class="card">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    
+                        
+                        <div class="card-header center card_title" >
+                            {{card.months}} MONTHS
+                        </div>
+                    
+                    <div class='price_card'>
+
+                        <span class="price">{{card.price}}.00</span>
+                        <span>EUR</span>
+                        <br>
+                        <span class="per">per</span>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item bg-color">{{card.not_1}}</li>
+                        <li class="list-group-item">{{card.not_2}}</li>
+                        <li class="list-group-item bg-color">{{card.not_3}}</li>
+                        <li class="list-group-item">{{card.not_4}}</li>
+                        <li class="list-group-item bg-color">{{card.not_5}}</li>
+
+                    </ul>
+                    <div class="card-btn">
+                        <a href="{% url 'products'%}" class="btn btn-primary">
+                            {% trans "Go Shopping" %}
+
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+
+            </div>
+
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+    <!--End features-->
+{% endblock content %}

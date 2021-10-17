@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+
+    {% block title %}Products{% endblock title %}
+    {% block content %}
+    
+    <div class="products">
+        <div class="container center">
+            <div class="section-header text-center">
+                <h1>{% trans "Products" %}</h1>
+            </div>
+        </div>
+        <div class="filter-toolbar-warp">
+            <div class="container">
+                <div class="filter-toolbar row">
+                    <div class="filters-toolbar_item col-md col-sm">
+                        <label for="SortTags" class="label--hidden">{% trans "Filter" %}</label>
+                        <div class="select-box">
+                            <select class="filters-toolbar_input filters-toolbar_input--filter" name="SortTags" id="SortTags" >
+                                <option value="">{% trans "Filter" %}</option>
+                            </select>
+                        </div>
+                    </div>
+                    {% get_current_language as LANGUAGE_CODE %}
+                        {% if LANGUAGE_CODE == 'ar' %}
+                            <div class="filters-toolbar_item text-center col-md col-sm" dir='rtl'>
+                                <span class="prod-count">{{products}} {% trans "product" %}</span>
+                            </div>
+                        {% else %}
+                            <div class="filters-toolbar_item text-center col-md col-sm">
+                                <span class="prod-count">{{products}} {% trans "product" %}</span>
+                            </div>
+                        {% endif %}    
+                    <div class="filters-toolbar_item text-right col-md col-sm">
+                        <label for="SortBy" class="label-hidden">{% trans "Sort" %}</label>
+                        <div class="select-box ml-auto">
+                            <select name="SortBy" id="SortBy" class="filters-toolbar_input" >
+                                <option value="title-ascending" selected="selected">{% trans "Sort" %}</option>
+                                <option value="manual">{% trans "Featured" %}</option>
+                                <option value="best-selling">{% trans "Best Selling" %}</option>
+                                <option value="title-descending">{% trans "Alphabetically, Z-A" %}</option>
+                                <option value="price-ascending">{% trans "Price, low to high" %}</option>
+                                <option value="price-descending">{% trans "Price, high to low" %}</option>
+                                <option value="created-descending">{% trans "Date, new to old" %}</option>
+                                <option value="created-ascending">{% trans "Date, old to new" %}</option>
+                            </select>
+                        </div>
+                        <input id="DefaultSortBy" type="hidden" value="title-ascending">
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    {% include 'features.html' %}
+
+ {% endblock %}   

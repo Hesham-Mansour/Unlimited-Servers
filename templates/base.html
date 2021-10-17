@@ -1,0 +1,194 @@
+{% load static %}
+{% load i18n %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>{% block title %}{% endblock title %}-Unlimated Servers</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Css Files-->
+    <link rel="stylesheet" href="{%static 'css/main.css'%}">
+    <link href="{%static 'css/fontawesome.min.css'%}" rel="stylesheet">
+    <link href="{%static 'css/brands.min.css'%}" rel="stylesheet">
+    <link href="{%static 'css/solid.min.css'%}" rel="stylesheet">
+    <link href="{%static 'css/regular.min.css'%}" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% block style %}{% endblock style %}
+    <style>
+        .whatsapp_btn {
+            position: fixed;
+            bottom: 4px;
+            right: 10px;
+            width: 100px;
+            height: 100px;
+            font-style: italic;
+            font-weight: 700;
+            color: #1ebea5;
+            display: block;
+
+
+        }
+
+        .whatsapp_btn a {
+            text-decoration: none;
+        }
+
+        .whatsapp_btn a img {
+            margin-left: 15px;
+            box-shadow: 4px 3px 5px 0px #2f2e2e66;
+            border-radius: 50%;
+        }
+
+        .whatsapp_btn a:hover {
+            color: rgb(201, 201, 201);
+        }
+    </style>
+</head>
+
+<body>
+    <!--Start header-->
+    <header class="header">
+        <div class="search-bar">
+            <input type="search" name="" placeholder="Search">
+            <a href="#"><i class="fas fa-search"></i></a>
+        </div>
+        <div class="icons">
+            <a class="whatsapp" href="https://wa.me/message/75SGMWBZFH52G1"><i class="fab fa-whatsapp"></i></a>
+            <i class="fas fa-shopping-bag"></i>
+        </div>
+
+        <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+            {% get_current_language as LANGUAGE_CODE %}
+            <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}">
+            {% if LANGUAGE_CODE == 'ar' %}
+            <button type='submit' name='language' value='en' class="lang ">
+                <span class="label"></span>English
+            </button>
+            {% else %}
+            <button type='submit' name='language' value='ar' class="lang ar-l">
+                <span class="label"></span>عربي
+            </button>
+            {% endif %}
+        </form>
+    </header>
+    <!-- End header -->
+
+    <!--Start navbar -->
+    <nav class="navbar navbar-expand-md navbar-light ">
+        <div class="container">
+            {% comment %} <a class="navbar-brand" href="#">
+                <img src="{% static 'image/magic_TV_Logo.png' %}" alt="Magic-TV">
+            </a> {% endcomment %}
+            <div class="txt-logo">
+                <h4>Unlimited</h4>
+                <span>S e r v e r s</span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="{% url 'home' %}">{% trans "Home" %} </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'products' %}">{% trans "Products" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact_us' %}">{% trans "Contact Us" %}</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--End navbar-->
+
+    {% block content %}
+    {% endblock content %}
+
+    <div class="whatsapp_btn center">
+        <a href="https://wa.me/message/75SGMWBZFH52G1">
+            <img src="{% static 'image/whatsapp-btn.png'%}" alt="whatsapp_btn">
+        </a>
+        connect to us
+    </div>
+
+    <!--start footer-->
+    <div class="clear"></div>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="contact_us col-lg-6 col-sm-6">
+                    <h4>Contact Us</h4>
+                    <div class="telegram-icon">
+                        <img src="{% static 'image/telegram.png'%}" alt="telegram">
+                        <p>(+1)323-723-34-38</p>
+                        <p>(+7)966-746-27-65</p>
+                    </div>
+                    <div class="whats-icon">
+                        <img src="{% static 'image/whatsapp.png'%}" alt="whatsapp">
+                        <p>(+1)323-723-34-38</p>
+                    </div>
+                    <div class="gmail-icon">
+                        <img src="{% static 'image/gmail.png'%}" alt="gmail">
+                        <p>tvnovartis@gmail.com</p>
+                    </div>
+                </div>
+                <div class='col-lg-4 col-sm-6'>
+                    <div class="f-item">
+                        <ul class="set-footer">
+                            <li class="set-item"><a href="{% url 'privacy' %}">Privacy Policy</a></li>
+                            <li class="set-item"><a href="{% url 'refund' %}">Refund Policy</a></li>
+                            <li class="set-item"><a href="#">Customer Policy</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright text-center">
+                <small>&copy; 2012, <a href="#">Unlimited-Servers | All rights reserved. </a></small>
+            </div>
+        </div>
+
+    </footer>
+    <!-- End footer -->
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!-- Optional JavaScript -->
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AG.EOs2oTLowaSLGLxlauVFvQmPrAXumFgXku6sAtuUX9D1x1Ee2IuRX"> // Required. Replace YOUR_CLIENT_ID with your sandbox client ID.
+    </script>
+    <script type='text/javascript'>
+        var nav = document.getElementsByClassName("nav-link");
+        for (var i = 0; i < nav.length; i++) {
+            nav[i].addEventListener("click", function () {
+                var current = document.getElementsByClassName("active");
+                if (current.length > 0) {
+                    current[0].className = current[0].className.replace(" active", "");
+                }
+                this.className += " active";
+            });
+        }
+
+    </script>
+</body>
+
+</html>

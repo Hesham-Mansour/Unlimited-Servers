@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+
+{% block style %}
+<link rel="stylesheet" href="{%static 'css/order.css'%}">
+<style>
+    
+</style>
+{% endblock style %}
+
+
+{% block title %}Order{% endblock title %}
+{% block content %}
+
+<div class="order">
+    <div class="container ">
+        <h1 class="text-center">{% trans "Shop" %}</h1>
+            <div class="product">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <img src="{%static 'image/bg-img-slide_3.jpg'%}" class="card-img-top" alt="" >
+                    </div>
+                    
+                    <div class="card-body col-lg-7">
+                        {% get_current_language as LANGUAGE_CODE %}
+                        {% if LANGUAGE_CODE == 'ar' %}
+                        <div class="card_cont" dir='rtl'>
+                            <h3 style="font-weight: 700">{{order.title_ar}}</h3>
+                            
+                            <h5>{{order.months}} {% trans "Months Family" %} </h5>
+                            <p class="">{{order.description_ar}}</p>
+                        </div>
+                        {% else %}
+                        <div class="card_cont">
+                            <h3 style="font-weight: 700">{{order.title}}</h3>
+                            
+                            <h5>{{order.months}} {% trans "Months Family" %} </h5>
+                            <p class="">{{order.description}}</p>
+                        {% endif %}
+                            <ul class="not_groub">
+                                <li class="not_item">-{{order.not_1}}</li>
+                                <li class="not_item">-{{order.not_2}}</li>
+                                <li class="not_item">-{{order.not_3}}</li>
+                                <li class="not_item">-{{order.not_4}}</li>
+                                <li class="not_item">-{{order.not_5}}</li>
+
+                            </ul>
+                            <span class="price">
+                                <span class="sale" style="font-weight: 100">€ {{order.sale_price}}</span>
+                                <bdi><span class="money">€ {{order.price}}</span></bdi>
+                            </span>
+                        </div>
+                        
+                        <div class='paypal_btn'>
+                            {% if order.price == 15 %}
+                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                    <input type="hidden" name="cmd" value="_s-xclick">
+                                    <input type="hidden" name="hosted_button_id" value="EAUY7BQKP2C7C">
+                                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                    <img alt="" border="0" src="https://www.paypalobjects.com/ar_EG/i/scr/pixel.gif" width="1" height="1">
+                                </form>
+                            {% elif order.price == 25 %}
+                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                    <input type="hidden" name="cmd" value="_s-xclick">
+                                    <input type="hidden" name="hosted_button_id" value="HBJ84C676FXBN">
+                                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                    <img alt="" border="0" src="https://www.paypalobjects.com/ar_EG/i/scr/pixel.gif" width="1" height="1">
+                                </form>
+                            {% elif order.price == 35 %}
+                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                    <input type="hidden" name="cmd" value="_s-xclick">
+                                    <input type="hidden" name="hosted_button_id" value="XYJGPBVPYZSBW">
+                                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                    <img alt="" border="0" src="https://www.paypalobjects.com/ar_EG/i/scr/pixel.gif" width="1" height="1">
+                                </form>
+                            {% elif order.price == 55 %}
+                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                    <input type="hidden" name="cmd" value="_s-xclick">
+                                    <input type="hidden" name="hosted_button_id" value="3FG7DJFCTNJWE">
+                                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                    <img alt="" border="0" src="https://www.paypalobjects.com/ar_EG/i/scr/pixel.gif" width="1" height="1">
+                                </form>
+                            {% elif order.price == 5 %} 
+                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                    <input type="hidden" name="cmd" value="_s-xclick">
+                                    <input type="hidden" name="hosted_button_id" value="YTCZK4QEBJYXN">
+                                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                    <img alt="" border="0" src="https://www.paypalobjects.com/ar_EG/i/scr/pixel.gif" width="1" height="1">
+                                </form>
+                            {% elif order.price == 10 %}
+                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                    <input type="hidden" name="cmd" value="_s-xclick">
+                                    <input type="hidden" name="hosted_button_id" value="Z8EGSJFJYA2BL">
+                                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                    <img alt="" border="0" src="https://www.paypalobjects.com/ar_EG/i/scr/pixel.gif" width="1" height="1">
+                                </form>
+                            {% elif  order.price == 50 %}
+                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                    <input type="hidden" name="cmd" value="_s-xclick">
+                                    <input type="hidden" name="hosted_button_id" value="XPCGM7RN7EST8">
+                                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                    <img alt="" border="0" src="https://www.paypalobjects.com/ar_EG/i/scr/pixel.gif" width="1" height="1">
+                                </form>
+
+                            {% endif %} 
+                        </div>
+                    </div>
+                </div>                
+             </div>                              
+    </div>                
+</div>                
+
+
+{% endblock content %}

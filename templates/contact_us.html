@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Contact Us
+{% endblock title %}
+
+{% block style %}
+
+<style>
+    .contact_us{
+        border-top: 1px solid #e8e9eb;
+
+    }
+    h1{
+    margin: 100px 0;
+    font-weight: bold;
+    color: black;
+    }
+
+    .body{
+        font-size: 30px;
+        line-height: 2;
+    }
+
+    .body img{
+        width: 60px;
+        height: 60px;
+    }
+    .body .whats-icon{
+        margin: 80px 0;
+    }
+</style>
+
+{% endblock style %}
+
+{% block content %}
+
+<div class="contact_us">
+    <div class='container '>
+        <h1 class="text-center">Contact Us</h1>
+        <div class ='body'>
+            <div class="telegram-icon">
+                <img src="{% static 'image/telegram.png'%}" alt="telegram">
+                <p>(+1)323-723-34-38</p>
+                <p>(+7)966-746-27-65</p>
+            </div>
+            <div class="whats-icon">
+                <img src="{% static 'image/whatsapp.png'%}" alt="whatsapp">
+                <p>(+1)323-723-34-38</p>
+            </div>
+            <div class="gmail-icon">
+                <img src="{% static 'image/gmail.png'%}" alt="gmail">
+                <p>tvnovartis@gmail.com</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}

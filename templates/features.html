@@ -1,0 +1,55 @@
+{% load static %}
+{% load i18n %}
+
+<link rel="stylesheet" href="{%static 'css/features.css'%}">
+
+
+<div class="features ">
+    <div class="container">
+        <h1 class="text-center">{% trans "Shop" %}</h1>
+        <div class="row">
+            {% for card in card %}
+            <div class="col-lg-4 col-md-6">
+                <div class="product card">
+                    <img src="{%static 'image/bg-img-slide_3.jpg'%}" class="card-img-top" alt="" width="200">
+                    
+                    <div class="card-body text-center">
+                        {% get_current_language as LANGUAGE_CODE %}
+                        {% if LANGUAGE_CODE == 'ar' %}
+                        <div dir='rtl'>
+                        <h3 style="font-weight: 700">{{card.title_ar}}</h3>
+                        
+                        
+                            <h5 >  {{card.months}} {% trans "Months Family" %}</h5></div>
+                        {% else %}
+                            <h3 style="font-weight: 700">{{card.title}}</h3>
+                            
+                            <h5>{{card.months}} {% trans "Months Family" %} </h5>
+                        {% endif %}
+                        <ul class="not_groub">
+                            <li class="not_item">-{{card.not_1}}</li>
+                            <li class="not_item">-{{card.not_2}}</li>
+                            <li class="not_item">-{{card.not_3}}</li>
+                            <li class="not_item">-{{card.not_4}}</li>
+                            <li class="not_item">-{{card.not_5}}</li>
+
+                        </ul>
+                        <span class="price">
+                            <span class="sale" style="font-weight: 100">€ {{card.sale_price}}</span>
+                            <bdi><span class="money">€ {{card.price}}</span></bdi>
+                        </span>
+                        <div class="card-btn">
+                            <a href="{% url 'order' card.pk %}" class="btn btn-primary">
+                                {% trans "Buy Now" %}
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+
+    </div>
+</div>

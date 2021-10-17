@@ -1,0 +1,53 @@
+.order{
+    border-top: #e8e9eb solid 1px;
+}
+
+
+h1{
+    margin: 50px 0;
+}
+.product{
+    display: block;
+    height: 80%;
+}
+
+.product img{
+    height: 100%;
+}
+    
+.paypal_btn{
+    display: block;
+    margin: 40px 30%;
+    padding-top: 10px;
+    width: 200px;
+}
+
+.price .sale {
+    text-decoration: line-through;
+    font-weight: 100;
+    font-size: 20px;
+}
+.price .money{
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0 10px ;
+
+}
+.card_cont{
+    padding-left: 15px;
+    margin-top: 30px;
+    border-left: solid 1px #e8e9eb;
+}
+
+.not_groub .not_item {
+    list-style: none;
+    color: black;
+
+}
+
+.product p{
+    text-transform: uppercase;
+    color: #788188;
+    font-size: 16px;
+    padding-left: 5px;
+}
